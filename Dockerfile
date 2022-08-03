@@ -1,4 +1,4 @@
-FROM kalilinux/kali:latest
+FROM kalilinux/kali-rolling
 
 ENV KALI_PASS=_set_this_
 ENV KALI_PORT=22
