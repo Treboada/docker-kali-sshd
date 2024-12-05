@@ -6,9 +6,12 @@ ENV KALI_PORT=22
 LABEL org.opencontainers.image.authors="caligari@treboada.net"
 LABEL org.opencontainers.image.url="https://github.com/Treboada/docker-kali-sshd"
 
-ENV ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y \
-	openssh-server
+
+RUN apt-get update \
+	&& apt-get upgrade -yq \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -yq \
+		openssh-server \
+	&& rm -fr /var/lib/apt/lists/*
 
 COPY docker_entrypoint.sh /usr/local/bin/
 
