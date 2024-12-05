@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kali-sshd
+spec:
+  selector:
+    matchLabels:
+      app: kali-sshd
+  template:
+    spec:
+      containers:
+      - name: kali-sshd
+        image: caligari/kali-sshd
+        ports:
+        - containerPort: 10022
+        env:
+        - name: KALI_PASS
+          valueFrom:
+            secretKeyRef:
+              name: kali-sshd-secret
+              key: KALI_PASS
+        - name: KALI_PORT
+          value: "10022"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kali-sshd-service
+spec:
+  selector:
+    app: kali-sshd
+  ports:
+    - protocol: TCP
+      port: 10022
+      targetPort: 10022
+  type: NodePort
+
