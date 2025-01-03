@@ -46,7 +46,7 @@ ssh -p 10022 root@SERVICE_IP
 
 ### v1.1.0
 
-- Action workflow to do monthly builds and pushes.
+- Action workflow to do weekly builds and pushes.
 - Kubernetes deployment instructions.
 
 ### v1.0.0 
