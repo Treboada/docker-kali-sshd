@@ -4,6 +4,7 @@ on:
   schedule:
     # Schedule the workflow to run at 1:25am UTC on every Monday
     - cron: '25 1 * * 1'
+  workflow_dispatch:
 
 jobs:
   build-and-push:
